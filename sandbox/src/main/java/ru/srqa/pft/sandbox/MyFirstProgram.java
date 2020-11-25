@@ -1,7 +1,7 @@
 package ru.srqa.pft.sandbox;
 
-class MyFirstProgram {
-    public static void main(String[] args) {
-        System.out.println("Hello !");
-    }
+public class MyFirstProgram {
+  public static void main(String[] args) {
+    System.out.println("Hello !");
+  }
 }
