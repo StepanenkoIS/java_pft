@@ -7,9 +7,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ContactCreationTests {
   private WebDriver wd;
-  private String baseUrl;
-  private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();
 
   @BeforeMethod
   public void setUp() throws Exception {
@@ -92,18 +89,4 @@ public class ContactCreationTests {
     }
   }
 
-  private String closeAlertAndGetItsText() {
-    try {
-      Alert alert = wd.switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
-    }
-  }
 }
