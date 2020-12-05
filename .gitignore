@@ -17,5 +17,3 @@ gradle-app.setting
 # Ignore .idea files
 .idea/
 *.class
-*.class
-*.class
