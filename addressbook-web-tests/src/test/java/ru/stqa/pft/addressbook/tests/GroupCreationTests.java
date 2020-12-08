@@ -26,13 +26,8 @@ public class GroupCreationTests extends TestBase {
     Assert.assertEquals(after, before + 1);
     Assert.assertEquals(afterList.size(), beforeList.size() + 1);
 
-    int max = 0;
-    for (GroupData g: afterList) {
-      if (g.getId() > max) {
-        max = g.getId();
-      }
-    }
-    group.setId(max);
+
+    group.setId(afterList.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     beforeList.add(group);
     Assert.assertEquals(new HashSet<Object>(afterList), new HashSet<Object>(beforeList));
   }
