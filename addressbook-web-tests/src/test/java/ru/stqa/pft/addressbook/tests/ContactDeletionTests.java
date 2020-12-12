@@ -1,40 +1,37 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.Comparator;
-import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
-
-  @Test (enabled = false)
-  public void testContactDeletion() throws Exception {
-
+  @BeforeMethod
+  public void ensurePreconditions() {
     app.goTo().gotoHomePage();
-
-    if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Ivan", "Oblomov", "Saratov", "test1"), true);
+    if (app.contact().all().size() == 0) {
+      app.contact().create(new ContactData()
+              .withFirstName("Ivan")
+              .withLastName("Oblomov")
+              .withAddress("Saratov")
+              .withGroup("test1"), true);
     }
-    List<ContactData> beforeList = app.getContactHelper().getContactList();
-
-    app.getContactHelper().selectContact(beforeList.get(0).getId());
-    app.getContactHelper().deletContact();
-    app.getContactHelper().alertDeleteContact();
-    app.goTo().gotoHomePage();
-
-    List<ContactData> afterList = app.getContactHelper().getContactList();
-    Assert.assertEquals(afterList.size(), beforeList.size()-1);
-
-    beforeList.remove(0);
-    Comparator<? super ContactData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-    beforeList.sort(byId);
-    afterList.sort(byId);
-
-    Assert.assertEquals(beforeList, afterList);
   }
 
-
+  @Test
+  public void testContactDeletion() throws Exception {
+    Contacts before = app.contact().all();
+    ContactData deleteContact = before.iterator().next();
+    app.contact().deleteContact(deleteContact);
+    app.goTo().gotoHomePage();
+    Contacts after = app.contact().all();
+    Assert.assertEquals(after.size(), before.size()-1);
+    before.remove(deleteContact);
+    MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.withOut(deleteContact)));
+  }
 }

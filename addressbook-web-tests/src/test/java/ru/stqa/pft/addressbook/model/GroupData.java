@@ -24,10 +24,6 @@ public class GroupData {
     return id;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
   public GroupData withId(int id) {
     this.id = id;
     return this;

@@ -92,7 +92,7 @@ public class GroupHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupData> list() {
+  public List<GroupData> allList() {
     List<GroupData> groups = new ArrayList<>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element: elements) {
@@ -104,7 +104,7 @@ public class GroupHelper extends HelperBase {
     return groups;
   }
 
-  public Set<GroupData> allList() {
+  public Set<GroupData> allSet() {
     Set<GroupData> groups = new HashSet<>();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element: elements) {
