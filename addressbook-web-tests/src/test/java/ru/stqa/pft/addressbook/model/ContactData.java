@@ -8,7 +8,21 @@ public class ContactData {
   private String firstName;
   private String lastName;
   private String address;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
   private String group;
+
+
+  public String getPhoneHome() {
+    return homePhone;
+  }
+  public String getPhoneMobile() {
+    return mobilePhone;
+  }
+  public String getPhoneWork() {
+    return workPhone;
+  }
 
   public String getGroup() {
     return group;
@@ -55,6 +69,18 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withPhoneMobile(String mobile) {
+    this.mobilePhone = mobile;
+    return this;
+  }
+  public ContactData withPhoneHome(String home) {
+    this.homePhone = home;
+    return this;
+  }
+  public ContactData withPhoneWork(String work) {
+    this.workPhone = work;
+    return this;
+  }
 
   @Override
   public boolean equals(Object o) {
