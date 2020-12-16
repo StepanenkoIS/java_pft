@@ -8,6 +8,9 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class GroupModificationTests extends TestBase{
 
   @BeforeMethod
@@ -28,8 +31,8 @@ public class GroupModificationTests extends TestBase{
             .withHeader("test2-update")
             .withFooter("test3-update");
     app.group().modify(group);
+    assertThat(app.group().count(), equalTo(before.size()));
     Groups after = app.group().all();
-    Assert.assertEquals(after.size(), before.size());
     MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.withOut(modifiedGroup).withAdded(group)));
   }
 
