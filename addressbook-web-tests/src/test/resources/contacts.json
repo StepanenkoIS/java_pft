@@ -11,31 +11,5 @@
     "email2": "admin-1@addresbook.ru",
     "email3": "info-1@addresbook.ru",
     "photoUrl": "src/test/resources/stru.png"
-  },
-  {
-    "firstName": "Ivan 2",
-    "lastName": "Oblomov 2",
-    "address": "123134, Россия, г. Волгоград, ул. Ленина, д.2",
-    "homePhone": "8 (800) 002",
-    "mobilePhone": "+7-890-12542",
-    "workPhone": "(900)-9802",
-    "group": "test 1",
-    "email": "boss-2@addresbook.ru",
-    "email2": "admin-2@addresbook.ru",
-    "email3": "info-2@addresbook.ru",
-    "photoUrl": "src/test/resources/stru.png"
-  },
-  {
-    "firstName": "Ivan 3",
-    "lastName": "Oblomov 3",
-    "address": "123134, Россия, г. Волгоград, ул. Ленина, д.3",
-    "homePhone": "8 (800) 003",
-    "mobilePhone": "+7-890-12543",
-    "workPhone": "(900)-9803",
-    "group": "test 1",
-    "email": "boss-3@addresbook.ru",
-    "email2": "admin-3@addresbook.ru",
-    "email3": "info-3@addresbook.ru",
-    "photoUrl": "src/test/resources/stru.png"
   }
 ]
