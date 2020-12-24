@@ -1,0 +1,41 @@
+<list>
+  <ContactData>
+    <firstName>Ivan 1</firstName>
+    <lastName>Oblomov 1</lastName>
+    <address>123134, Россия, г. Волгоград, ул. Ленина, д.1</address>
+    <homePhone>8 (800) 001</homePhone>
+    <mobilePhone>+7-890-12541</mobilePhone>
+    <workPhone>(900)-9801</workPhone>
+    <group>test 1</group>
+    <email>boss-1@addresbook.ru</email>
+    <email2>admin-1@addresbook.ru</email2>
+    <email3>info-1@addresbook.ru</email3>
+    <photoUrl>src/test/resources/stru.png</photoUrl>
+  </ContactData>
+  <ContactData>
+    <firstName>Ivan 2</firstName>
+    <lastName>Oblomov 2</lastName>
+    <address>123134, Россия, г. Волгоград, ул. Ленина, д.2</address>
+    <homePhone>8 (800) 002</homePhone>
+    <mobilePhone>+7-890-12542</mobilePhone>
+    <workPhone>(900)-9802</workPhone>
+    <group>test 1</group>
+    <email>boss-2@addresbook.ru</email>
+    <email2>admin-2@addresbook.ru</email2>
+    <email3>info-2@addresbook.ru</email3>
+    <photoUrl>src/test/resources/stru.png</photoUrl>
+  </ContactData>
+  <ContactData>
+    <firstName>Ivan 3</firstName>
+    <lastName>Oblomov 3</lastName>
+    <address>123134, Россия, г. Волгоград, ул. Ленина, д.3</address>
+    <homePhone>8 (800) 003</homePhone>
+    <mobilePhone>+7-890-12543</mobilePhone>
+    <workPhone>(900)-9803</workPhone>
+    <group>test 1</group>
+    <email>boss-3@addresbook.ru</email>
+    <email2>admin-3@addresbook.ru</email2>
+    <email3>info-3@addresbook.ru</email3>
+    <photoUrl>src/test/resources/stru.png</photoUrl>
+  </ContactData>
+</list>
