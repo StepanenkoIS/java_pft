@@ -9,11 +9,10 @@ public class TestBase {
 
   public static final ApplicationManager app
           = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
-//, BrowserType.CHROME
+
   @BeforeSuite
   public void setUp() throws Exception {
     app.init();
-
   }
 
   @AfterSuite
