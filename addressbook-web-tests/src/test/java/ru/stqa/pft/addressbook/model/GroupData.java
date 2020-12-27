@@ -23,7 +23,6 @@ public class GroupData {
   @Column(name = "group_name")
   private String name;
 
-
   @Expose
   @Column(name = "group_header")
   @Type(type = "text")
