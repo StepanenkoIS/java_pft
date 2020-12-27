@@ -15,6 +15,9 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+
+// -f src/test/resources/contacts.json -c 100 -d json
+// E:\devel\java_pft\addressbook-web-tests
 public class ContactDataGenerator {
   @Parameter(names = "-c", description = "Contact count")
   public int count;

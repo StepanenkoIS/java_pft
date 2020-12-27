@@ -14,6 +14,9 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+
+// -f src/test/resources/groups.json -c 100 -d json
+// E:\devel\java_pft\addressbook-web-tests
 public class GroupDataGenerator {
   @Parameter(names = "-c", description = "Group count")
   public int count;
