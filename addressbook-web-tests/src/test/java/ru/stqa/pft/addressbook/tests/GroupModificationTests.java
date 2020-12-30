@@ -22,17 +22,21 @@ public class GroupModificationTests extends TestBase{
 
   @Test
   public void testGroupModification() {
-    Groups before = app.db().groups();
-    GroupData modifiedGroup = before.iterator().next();
-    GroupData group = new GroupData()
-            .withId(modifiedGroup.getId())
-            .withName("test1-update")
-            .withHeader("test2-update")
-            .withFooter("test3-update");
-    app.group().modify(group);
-    assertThat(app.group().count(), equalTo(before.size()));
-    Groups after = app.db().groups();
-    MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.withOut(modifiedGroup).withAdded(group)));
+    //Для запуска данного метода необходимо запускать с параметром '-DverifyUI=true'
+    if(Boolean.getBoolean("verifyUI")) {
+      Groups before = app.db().groups();
+      GroupData modifiedGroup = before.iterator().next();
+      GroupData group = new GroupData()
+              .withId(modifiedGroup.getId())
+              .withName("test1-update")
+              .withHeader("test2-update")
+              .withFooter("test3-update");
+      app.group().modify(group);
+      assertThat(app.group().count(), equalTo(before.size()));
+      Groups after = app.db().groups();
+      MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.withOut(modifiedGroup).withAdded(group)));
+      verifyGroupListInUI();
+    }
   }
 
 }
