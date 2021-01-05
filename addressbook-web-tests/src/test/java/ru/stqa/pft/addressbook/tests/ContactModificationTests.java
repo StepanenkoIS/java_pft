@@ -7,18 +7,28 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 public class ContactModificationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
+    Groups groups = app.db().groups();
+    if (groups.size() == 0) {
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
+      groups = app.db().groups();
+    }
+
     app.goTo().gotoHomePage();
+
     if (app.db().contacts().size() == 0) {
       app.contact().create(new ContactData()
               .withFirstName("Ivan")
               .withLastName("Oblomov")
               .withAddress("Saratov")
-              .withGroup("test1"), true);
+              .inGroup(groups.iterator().next()), true);
     }
   }
 
@@ -30,7 +40,14 @@ public class ContactModificationTests extends TestBase {
               .withId(modifiedContact.getId())
               .withFirstName("Grigory")
               .withLastName("Pechorin")
-              .withAddress("SPB");
+              .withAddress("SPB")
+              .withPhoneHome("8 (800) 00")
+              .withPhoneMobile("+7-897-1254")
+              .withPhoneWork("(900)-98")
+              .withAddress("123134, Россия, г. Волгоград, ул. Ленина, д.5")
+              .withEmail("boss@addresbook.ru")
+              .withEmail2("admin@addresbook.ru")
+              .withEmail3("info@addresbook.ru");
       app.contact().modify(contact);
       Contacts after = app.db().contacts();
       Assert.assertEquals(after.size(), before.size());

@@ -7,8 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.*;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -61,6 +62,21 @@ public class ContactHelper extends HelperBase {
     delete();
     alertDeleteContact();
     contactCache = null;
+  }
+
+  public void contactAddInGroup(ContactData contact, GroupData group) {
+    selectById(contact.getId());
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+    click(By.xpath("//input[@name='add']"));
+  }
+
+  public void selectFromGroup(ContactData contact) {
+    new Select(wd.findElement(By.name("group"))).selectByValue(String.valueOf(contact.getGroups().iterator().next().getId()));
+  }
+
+  public void contactDeletionFromGroup(ContactData contact) {
+    selectById(contact.getId());
+    click(By.xpath("//input[@name='remove']"));
   }
 
   public void modify(ContactData contact) {
@@ -150,5 +166,21 @@ public class ContactHelper extends HelperBase {
             .withEmail(email)
             .withEmail2(email2)
             .withEmail3(email3);
+  }
+
+  public void selectGroupNone() {
+    click(By.name("group"));
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText("[none]");
+    click(By.name("group"));
+  }
+
+  public void selectGroupAll() {
+    click(By.name("group"));
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText("[all]");
+    click(By.name("group"));
+  }
+
+  public int checkNumberOfResults(){
+    return Integer.parseInt((wd.findElement(By.id("search_count")).getText()));
   }
 }
